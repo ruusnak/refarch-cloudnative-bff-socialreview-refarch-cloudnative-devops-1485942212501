@@ -1,0 +1,51 @@
+{
+  "review-microservice": {
+    "name": "review-microservice",
+    "baseURL": "http://localhost:8080",
+    "crud": false,
+    "connector": "rest",
+    "debug": false,
+    "options": {
+      "headers": {
+        "accept": "application/json",
+        "content-type": "application/json"
+      },
+      "strictSSL": false
+    },
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "/micro/review",
+          "query": {
+            "itemId": "{itemid}"
+          },
+          "options": {
+            "strictSSL": false,
+            "useQuerystring": true
+          }
+        },
+        "functions": {
+          "find": ["itemid"]
+        }
+      },
+      {
+        "template": {
+          "method": "POST",
+          "url": "/micro/review",
+          "form": {
+              "comment": "{comment:string}",
+              "itemId": "{itemId}",
+              "rating": "{rating}",
+              "reviewer_email": "{reviewer_email:string}",
+              "reviewer_name": "{reviewer_name:string}",
+              "review_date": "{review_date:string}"
+          }
+        },
+        "functions": {
+          "save": ["comment","itemId","rating","reviewer_email","reviewer_name","review_date"]
+        }
+      }
+    ]
+  }
+}
