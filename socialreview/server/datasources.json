@@ -5,12 +5,6 @@
     "crud": false,
     "connector": "rest",
     "debug": true,
-    "options": {
-      "headers": {
-        "content-type": "application/json"
-      },
-      "strictSSL": false
-    },
     "operations": [
       {
         "template": {
@@ -25,7 +19,7 @@
           }
         },
         "functions": {
-          "find": [
+          "list": [
             "itemId"
           ]
         }
@@ -33,24 +27,31 @@
       {
         "template": {
           "method": "POST",
+          "options": {
+            "headers": {
+              "accept": "application/json",
+              "content-type": "application/json"
+            },
+            "strictSSL": false
+          },
           "url": "http://localhost:8080/micro/review",
-          "form": {
-            "comment": "{comment:string}",
+          "body": {
+            "comment": "{comment}",
             "itemId": "{itemId}",
             "rating": "{rating}",
-            "reviewer_email": "{reviewer_email:string}",
-            "reviewer_name": "{reviewer_name:string}",
-            "review_date": "{review_date:string}"
+            "reviewer_email": "{reviewer_email}",
+            "reviewer_name": "{reviewer_name}",
+            "review_date": "{review_date}"
           }
         },
         "functions": {
-          "save": [
-            "comment",
-            "itemId",
-            "rating",
-            "reviewer_email",
-            "reviewer_name",
-            "review_date"
+          "post": [
+              "comment",
+              "itemId",
+              "rating",
+              "reviewer_email",
+              "reviewer_name",
+              "review_date"
           ]
         }
       }

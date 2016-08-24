@@ -1,7 +1,6 @@
 {
   "name": "review",
-  "plural": "review",
-  "base": "PersistedModel",
+  "base": "Model",
   "idInjection": true,
   "options": {
     "validateUpsert": true
