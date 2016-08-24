@@ -5,7 +5,7 @@ module.exports = function(Review) {
 
     //var reviewService = Review.app.dataSources.review;
 
-    Review.comment(comment, itemId, rating, reviewer_email, reviewer_name, review_date, function(err, response, context) {
+    Review.post(comment, itemId, rating, reviewer_email, reviewer_name, review_date, function(err, response, context) {
       if (err) throw err; //error making request
       if (response.error) {
         cb(null, '> response error: ' + response.error.stack);
@@ -19,7 +19,7 @@ module.exports = function(Review) {
     }
 
     Review.remoteMethod(
-        'save',
+        'comment',
         {
           accepts: [{arg: 'comment', type: 'string'},
                   {arg: 'itemId', type: 'string'},
