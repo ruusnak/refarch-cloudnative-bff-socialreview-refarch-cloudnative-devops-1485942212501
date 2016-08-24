@@ -1,0 +1,68 @@
+type: bluemix
+server:
+  displayName: US South
+  name: us-south
+  host: us.apiconnect.ibmcloud.com
+org:
+  url: 'https://us.apiconnect.ibmcloud.com/v1/orgs/57be1d760cf2b908a6f4a6f2'
+  id: 57be1d760cf2b908a6f4a6f2
+  name: centusibmcom-cloudnative-dev
+  status: active
+  orgType: apiProvider
+  displayName: cent@us.ibm.com (cloudnative-dev)
+  externalOrgId: 0c56f28f-ad18-4860-bd94-07ab4a7c9d44
+  externalInviteOverride: 'https://new-console.ng.bluemix.net/apis/catalog/invitation'
+  externalSpaceId: 0c56f28f-ad18-4860-bd94-07ab4a7c9d44
+  externalNativeOrgId: cf867ea8-4586-41a7-bba7-0766d769a2cd
+  advPortalOverride: true
+  extUaaAuthenticated: false
+  requiresSSLClientCertCheck: false
+catalog:
+  id: 57be1dfa0cf2e360e27235c5
+  shortName: bluecompute
+  name: BlueCompute
+  sandbox: true
+app:
+  metadata:
+    guid: 13523c19-04e1-4b4d-bc5f-994705d129f9
+    url: /v2/apps/13523c19-04e1-4b4d-bc5f-994705d129f9
+    created_at: '2016-08-24T22:25:26Z'
+    updated_at: null
+  entity:
+    name: socialreview-bff-app
+    production: false
+    space_guid: 0c56f28f-ad18-4860-bd94-07ab4a7c9d44
+    stack_guid: ac91d31a-86a3-453b-babf-8d49c9d763fc
+    buildpack: null
+    detected_buildpack: null
+    environment_json: {}
+    memory: 256
+    instances: 1
+    disk_quota: 1024
+    state: STOPPED
+    version: 2c47e3e8-35d8-473c-8a17-a89d63f8e93d
+    command: null
+    console: false
+    debug: null
+    staging_task_id: null
+    package_state: PENDING
+    health_check_type: port
+    health_check_timeout: null
+    staging_failed_reason: null
+    staging_failed_description: null
+    diego: false
+    docker_image: null
+    package_updated_at: null
+    detected_start_command: ''
+    enable_ssh: true
+    docker_credentials_json:
+      redacted_message: '[PRIVATE DATA HIDDEN]'
+    ports: null
+    space_url: /v2/spaces/0c56f28f-ad18-4860-bd94-07ab4a7c9d44
+    stack_url: /v2/stacks/ac91d31a-86a3-453b-babf-8d49c9d763fc
+    routes_url: /v2/apps/13523c19-04e1-4b4d-bc5f-994705d129f9/routes
+    events_url: /v2/apps/13523c19-04e1-4b4d-bc5f-994705d129f9/events
+    service_bindings_url: /v2/apps/13523c19-04e1-4b4d-bc5f-994705d129f9/service_bindings
+    route_mappings_url: /v2/apps/13523c19-04e1-4b4d-bc5f-994705d129f9/route_mappings
+id: 36c71f5a-1ec0-489c-bb33-1fd8e55bfd36
+target: 1.0.0

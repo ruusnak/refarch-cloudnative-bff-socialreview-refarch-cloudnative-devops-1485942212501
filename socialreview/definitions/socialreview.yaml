@@ -63,7 +63,12 @@ x-ibm-configuration:
   assembly:
     execute:
       - invoke:
-          target-url: $(runtime-url)$(request.path)$(request.search)
+          target-url: $(TARGET_HOST)$(request.path)$(request.search)
+  properties:
+    TARGET_HOST:
+      value: 'https://socialreviewbffapp.mybluemix.net'
+      description: ''
+      encoded: false
 parameters:
   itemId:
     name: itemId
