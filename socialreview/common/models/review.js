@@ -1,11 +1,11 @@
 module.exports = function(Review) {
 
-  Review.save = function(comment, itemId, rating, reviewer_email, reviewer_name, review_date, cb) {
+  Review.comment = function(comment, itemId, rating, reviewer_email, reviewer_name, review_date, cb) {
 
 
     //var reviewService = Review.app.dataSources.review;
 
-    Review.post(comment, itemId, rating, reviewer_email, reviewer_name, review_date, function(err, response, context) {
+    Review.comment(comment, itemId, rating, reviewer_email, reviewer_name, review_date, function(err, response, context) {
       if (err) throw err; //error making request
       if (response.error) {
         cb(null, '> response error: ' + response.error.stack);
