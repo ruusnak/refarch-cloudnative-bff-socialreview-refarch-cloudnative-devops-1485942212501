@@ -12,5 +12,13 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "comment": {
+    "dataSource": "review-microservice",
+    "public": true
+  },
+  "review": {
+    "dataSource": "review-microservice",
+    "public": true
   }
 }

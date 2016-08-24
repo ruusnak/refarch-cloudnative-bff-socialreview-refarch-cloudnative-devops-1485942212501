@@ -1,5 +1,468 @@
-paths: {}
-definitions: {}
+paths:
+  /comments/find:
+    get:
+      tags:
+        - comment
+      operationId: comment.find
+      parameters:
+        - name: itemId
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /comments/invoke:
+    post:
+      tags:
+        - comment
+      operationId: comment.invoke
+      parameters:
+        - name: request
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /comments/save:
+    post:
+      tags:
+        - comment
+      operationId: comment.save
+      parameters:
+        - name: comment
+          in: form
+          required: false
+          type: string
+        - name: itemId
+          in: form
+          required: false
+          type: string
+        - name: rating
+          in: form
+          required: false
+          type: string
+        - name: reviewer_email
+          in: form
+          required: false
+          type: string
+        - name: reviewer_name
+          in: form
+          required: false
+          type: string
+        - name: review_date
+          in: form
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /review/find:
+    get:
+      tags:
+        - review
+      operationId: review.find__get_review_find
+      parameters:
+        - name: itemId
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /review/invoke:
+    post:
+      tags:
+        - review
+      operationId: review.invoke
+      parameters:
+        - name: request
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /review/save:
+    post:
+      tags:
+        - review
+      operationId: review.save
+      parameters:
+        - name: comment
+          in: form
+          required: false
+          type: string
+        - name: itemId
+          in: form
+          required: false
+          type: string
+        - name: rating
+          in: form
+          required: false
+          type: string
+        - name: reviewer_email
+          in: form
+          required: false
+          type: string
+        - name: reviewer_name
+          in: form
+          required: false
+          type: string
+        - name: review_date
+          in: form
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /review:
+    post:
+      tags:
+        - review
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: review.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    patch:
+      tags:
+        - review
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: review.upsert__patch_review
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    put:
+      tags:
+        - review
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: review.upsert__put_review
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    get:
+      tags:
+        - review
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: review.find__get_review
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/review'
+      deprecated: false
+  /review/replaceOrCreate:
+    post:
+      tags:
+        - review
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: review.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+  '/review/{id}/exists':
+    get:
+      tags:
+        - review
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'review.exists__get_review_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/review/{id}':
+    head:
+      tags:
+        - review
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'review.exists__head_review_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - review
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: review.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    delete:
+      tags:
+        - review
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: review.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - review
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'review.prototype.updateAttributes__patch_review_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    put:
+      tags:
+        - review
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: 'review.prototype.updateAttributes__put_review_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+  '/review/{id}/replace':
+    post:
+      tags:
+        - review
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: review.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+  /review/findOne:
+    get:
+      tags:
+        - review
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: review.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+  /review/update:
+    post:
+      tags:
+        - review
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: review.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /review/count:
+    get:
+      tags:
+        - review
+      summary: Count instances of the model matched by where from the data source.
+      operationId: review.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+definitions:
+  review:
+    properties:
+      id:
+        type: number
+        format: double
+    additionalProperties: false
+  x-any:
+    properties: {}
 basePath: /api
 swagger: '2.0'
 info:
@@ -41,3 +504,9 @@ x-ibm-configuration:
     execute:
       - invoke:
           target-url: $(runtime-url)$(request.path)$(request.search)
+parameters:
+  itemId:
+    name: itemId
+    type: string
+    required: false
+    in: query
