@@ -4,10 +4,9 @@
     "baseURL": "http://localhost:8080",
     "crud": false,
     "connector": "rest",
-    "debug": false,
+    "debug": true,
     "options": {
       "headers": {
-        "accept": "application/json",
         "content-type": "application/json"
       },
       "strictSSL": false
@@ -17,12 +16,12 @@
         "template": {
           "method": "GET",
           "url": "http://localhost:8080/micro/review",
-          "query": {
-            "itemId": "{itemId}"
-          },
           "options": {
             "strictSSL": false,
             "useQuerystring": true
+          },
+          "query": {
+            "itemId": "{itemId:string}"
           }
         },
         "functions": {
