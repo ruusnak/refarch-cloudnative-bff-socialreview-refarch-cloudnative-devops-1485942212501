@@ -1,7 +1,7 @@
 {
   "review-microservice": {
     "name": "review-microservice",
-    "baseURL": "http://localhost:8080",
+    "baseURL": "http://socialreviewservice.mybluemix.net/micro/review",
     "crud": false,
     "connector": "rest",
     "debug": true,
@@ -9,13 +9,13 @@
       {
         "template": {
           "method": "GET",
-          "url": "http://localhost:8080/micro/review",
+          "url": "http://socialreviewservice.mybluemix.net/micro/review",
           "options": {
             "strictSSL": false,
             "useQuerystring": true
           },
           "query": {
-            "itemId": "{itemId:string}"
+            "itemId": "{itemId:int}"
           }
         },
         "functions": {
@@ -34,11 +34,11 @@
             },
             "strictSSL": false
           },
-          "url": "http://localhost:8080/micro/review",
+          "url": "http://socialreviewservice.mybluemix.net/micro/review",
           "body": {
             "comment": "{comment}",
-            "itemId": "{itemId}",
-            "rating": "{rating}",
+            "itemId": "{itemId:int}",
+            "rating": "{rating:int}",
             "reviewer_email": "{reviewer_email}",
             "reviewer_name": "{reviewer_name}",
             "review_date": "{review_date}"

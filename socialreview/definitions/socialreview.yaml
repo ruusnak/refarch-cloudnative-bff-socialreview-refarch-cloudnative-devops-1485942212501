@@ -46,8 +46,7 @@ securityDefinitions:
     name: X-IBM-Client-Secret
     type: apiKey
 security:
-  - clientIdHeader: []
-    clientSecretHeader: []
+  - {}
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -64,11 +63,14 @@ x-ibm-configuration:
     execute:
       - invoke:
           target-url: $(TARGET_HOST)$(request.path)$(request.search)
+          tls-profile: 'client:Loopback-client'
   properties:
     TARGET_HOST:
-      value: 'https://socialreviewbffapp.mybluemix.net'
+      value: >-
+        https://apiconnect-8ac20878-aa14-4733-8067-3af27dcb9077.centusibmcom-cloudnative-dev.apic.mybluemix.net
       description: ''
       encoded: false
+  gateway: datapower-gateway
 parameters:
   itemId:
     name: itemId
