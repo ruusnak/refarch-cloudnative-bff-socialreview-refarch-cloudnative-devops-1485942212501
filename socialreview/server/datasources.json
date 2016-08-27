@@ -15,7 +15,7 @@
             "useQuerystring": true
           },
           "query": {
-            "itemId": "{itemId:int}"
+            "itemId": "{itemId}"
           }
         },
         "functions": {
@@ -37,8 +37,8 @@
           "url": "http://socialreviewservice.mybluemix.net/micro/review",
           "body": {
             "comment": "{comment}",
-            "itemId": "{itemId:int}",
-            "rating": "{rating:int}",
+            "itemId": "{itemId}",
+            "rating": "{rating}",
             "reviewer_email": "{reviewer_email}",
             "reviewer_name": "{reviewer_name}",
             "review_date": "{review_date}"

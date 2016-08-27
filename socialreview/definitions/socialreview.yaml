@@ -63,17 +63,18 @@ x-ibm-configuration:
     execute:
       - invoke:
           target-url: $(TARGET_HOST)$(request.path)$(request.search)
-          tls-profile: 'client:Loopback-client'
+          tls-profile: ''
   properties:
     TARGET_HOST:
       value: >-
-        https://apiconnect-8ac20878-aa14-4733-8067-3af27dcb9077.centusibmcom-cloudnative-dev.apic.mybluemix.net
+        https://apiconnect-a21c2f57-212c-4aca-9b16-ce3e649ce4f4.centusibmcom-cloudnative-dev.apic.mybluemix.net
       description: ''
       encoded: false
   gateway: datapower-gateway
 parameters:
   itemId:
     name: itemId
-    type: string
+    type: integer
     required: false
     in: query
+    format: int32
