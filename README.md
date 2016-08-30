@@ -70,8 +70,7 @@ Assuming deploying to API connect environment at: us.apiconnect.ibmcloud.com/org
 Use the following command to deploy the Loopback application
 
    `$ apic login --server us.apiconnect.ibmcloud.com`  
-   `$ apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/centusibmcom-cloudnative-dev/apps/socialreview-bff-app`  `$ apic apps:publish`
+   `$ apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/centusibmcom-cloudnative-dev/apps/socialreview-bff-app`   
+   `$ apic apps:publish`
 
    This will deploy the Socialreview BFF application to Bluemix runtime.
-
-   
