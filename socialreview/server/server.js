@@ -1,6 +1,5 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-
 var app = module.exports = loopback();
 
 app.start = function() {
@@ -20,6 +19,10 @@ app.start = function() {
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname, function(err) {
   if (err) throw err;
+
+  if (process.env.VCAP_SERVICES) {
+    var agent = require('bluemix-autoscaling-agent');
+  }
 
   // start the server if `$ node server.js`
   if (require.main === module)
