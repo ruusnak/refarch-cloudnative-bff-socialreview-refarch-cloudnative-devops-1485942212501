@@ -23,6 +23,6 @@ done
 
 ZUULPROXY="${ZUUL_FQDN}/${MICROSERVICE_NAME}/${CONTEXT_PATH}"
 echo "Zuul Proxy URL: $ZUULPROXY"
-sed -e "s|\(\"baseURL\".*http:\/\/\)\(.*\)\(\/review.*\)|\1$ZUULPROXY\3|" server/datasources.json
+sed -i -e "s|\(\"baseURL\".*http:\/\/\)\(.*\)\(\/review.*\)|\1$ZUULPROXY\3|" server/datasources.json
 sed -i -e "s|\(\"url\".*http:\/\/\)\(.*\)\(\/review.*\)|\1$ZUULPROXY\3|g" server/datasources.json
 cat server/datasources.json|grep baseURL
