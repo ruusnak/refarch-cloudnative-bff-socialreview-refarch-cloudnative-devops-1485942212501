@@ -21,8 +21,10 @@ esac
 shift
 done
 
-ZUULPROXY="${ZUUL_FQDN}/${MICROSERVICE_NAME}/${CONTEXT_PATH}"
+ZUULPROXY="https://${ZUUL_FQDN}/${MICROSERVICE_NAME}/${CONTEXT_PATH}"
 echo "Zuul Proxy URL: $ZUULPROXY"
-sed -i -e "s|\(\"baseURL\".*http:\/\/\)\(.*\)\(\/review.*\)|\1$ZUULPROXY\3|" server/datasources.json
-sed -i -e "s|\(\"url\".*http:\/\/\)\(.*\)\(\/review.*\)|\1$ZUULPROXY\3|g" server/datasources.json
+sed -i -e "s|\(\"baseURL\"\)\(.*\)\(http.*\)\(\/review.*\)|\1\2$ZUULPROXY\4|" server/datasources.json >/dev/null
+sed -i -e "s|\(\"url\"\)\(.*\)\(http.*\)\(\/review.*\)|\1\2$ZUULPROXY\4|g" server/datasources.json >/dev/null
 cat server/datasources.json|grep baseURL
+cat server/datasources.json|grep url
+exit
