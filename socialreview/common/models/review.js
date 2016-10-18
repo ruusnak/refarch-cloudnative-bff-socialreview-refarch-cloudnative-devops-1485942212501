@@ -25,9 +25,15 @@ module.exports = function(Review) {
 
     }
 
+    // This code is trying to parse the incoming request Authorization headers
+    // Save it to a variable then pass to the REST connect template
+    // To pass the Authorization header, it requires the template define the header: Authorization entry
+    // This call will update the value
     Review.beforeRemote('list', function(ctx, report, next){
-      ctx.jwttoken = ctx.req.headers.authorization;
-      console.log("AUthorization Header: " + ctx.jwttoken);
+      var ds = Review.getDataSource(),
+      listOperation = ds.settings.operations[0],
+      headers = listOperation.template.headers;
+      headers['Authorization'] = ctx.req.headers.authorization;
       next();
     });
 

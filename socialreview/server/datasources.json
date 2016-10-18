@@ -11,7 +11,7 @@
           "method": "GET",
           "url": "https://netflix-zuul-cloudnative-dev.mybluemix.net/socialreview-microservice/micro/review",
           "headers":{
-           "Authorization": "{jwttoken}"
+           "Authorization": ""
          },
           "options": {
             "strictSSL": false,
