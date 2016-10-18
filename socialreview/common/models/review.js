@@ -5,6 +5,13 @@ module.exports = function(Review) {
 
     //var reviewService = Review.app.dataSources.review;
 
+    // Pass the JWT Authorization header
+    //Review.beforeRemote('comment', function(ctx, report, next){
+    //  ctx.jwttoken = ctx.req.headers.Authorization;
+    //  console.log("AUthorization Header: " + ctx.jwttoken);
+    //  next();
+    //});
+
     Review.post(comment, itemId, rating, reviewer_email, reviewer_name, review_date, function(err, response, context) {
       if (err) throw err; //error making request
       if (response.error) {
@@ -17,6 +24,12 @@ module.exports = function(Review) {
     });
 
     }
+
+    Review.beforeRemote('list', function(ctx, report, next){
+      ctx.jwttoken = ctx.req.headers.authorization;
+      console.log("AUthorization Header: " + ctx.jwttoken);
+      next();
+    });
 
     Review.remoteMethod(
         'comment',
