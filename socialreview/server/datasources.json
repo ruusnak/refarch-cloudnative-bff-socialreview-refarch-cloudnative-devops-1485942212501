@@ -32,6 +32,7 @@
           "method": "POST",
           "options": {
             "headers": {
+              "Authorization": "",
               "accept": "application/json",
               "content-type": "application/json"
             },
