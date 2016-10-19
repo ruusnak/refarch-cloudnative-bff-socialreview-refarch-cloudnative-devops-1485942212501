@@ -3,15 +3,6 @@ module.exports = function(Review) {
   Review.comment = function(comment, itemId, rating, reviewer_email, reviewer_name, review_date, cb) {
 
 
-    //var reviewService = Review.app.dataSources.review;
-
-    // Pass the JWT Authorization header
-    //Review.beforeRemote('comment', function(ctx, report, next){
-    //  ctx.jwttoken = ctx.req.headers.Authorization;
-    //  console.log("AUthorization Header: " + ctx.jwttoken);
-    //  next();
-    //});
-
     Review.post(comment, itemId, rating, reviewer_email, reviewer_name, review_date, function(err, response, context) {
       if (err) throw err; //error making request
       if (response.error) {
@@ -32,6 +23,16 @@ module.exports = function(Review) {
     Review.beforeRemote('list', function(ctx, report, next){
       var ds = Review.getDataSource(),
       listOperation = ds.settings.operations[0],
+      headers = listOperation.template.headers;
+      headers['Authorization'] = ctx.req.headers.authorization;
+      next();
+    });
+
+    // Set the JWT Token to the backend POST function
+    // But the hook point is on the comment API
+    Review.beforeRemote('comment', function(ctx, report, next){
+      var ds = Review.getDataSource(),
+      listOperation = ds.settings.operations[1],
       headers = listOperation.template.headers;
       headers['Authorization'] = ctx.req.headers.authorization;
       next();
