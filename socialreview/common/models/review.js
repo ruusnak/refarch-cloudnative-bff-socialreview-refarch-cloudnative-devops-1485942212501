@@ -28,7 +28,9 @@ module.exports = function(Review) {
       next();
     });
 
-    Review.beforeRemote('post', function(ctx, report, next){
+    // Set the JWT Token to the backend POST function
+    // But the hook point is on the comment API
+    Review.beforeRemote('comment', function(ctx, report, next){
       var ds = Review.getDataSource(),
       listOperation = ds.settings.operations[1],
       headers = listOperation.template.headers;
