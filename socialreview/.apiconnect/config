@@ -4,5 +4,8 @@ us.apiconnect.ibmcloud.com.meta:
     authTypes:
       - basic
       - token
+  toolkit:
+    version_recommended: 2.1.30
+    version_minimum: 2.1.30
 app: 'apic-app://us.apiconnect.ibmcloud.com/orgs/centusibmcom-cloudnative-dev/apps/socialreview-bff-app'
 catalog: 'apic-catalog://us.apiconnect.ibmcloud.com/orgs/centusibmcom-cloudnative-dev/catalogs/bluecompute'
