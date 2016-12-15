@@ -107,7 +107,7 @@ x-ibm-configuration:
           \   "
     - invoke:
         target-url: "$(TARGET_HOST)$(request.path)$(request.search)"
-        tls-profile: ""
+        tls-profile: 'client:Loopback-client'
   properties:
     TARGET_HOST:
       value: "https://apiconnect-243ab119-1c05-402c-a74c-6125122c9273.centusibmcom-cloudnative-dev.apic.mybluemix.net"
